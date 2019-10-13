@@ -10,5 +10,6 @@ class WeatherUpdater {
             degrees < 25 -> "mild" to ORANGE
             else -> "hot" to RED
         }
+        println("$description - $color")
     }
 }
