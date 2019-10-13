@@ -1,4 +1,5 @@
 package week2.example1
 
-class HelloWorld {
+fun main() {
+    println("Hello, World!")
 }
