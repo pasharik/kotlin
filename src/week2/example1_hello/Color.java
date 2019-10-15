@@ -1,4 +1,4 @@
-package week2.example1;
+package week2.example1_hello;
 
 public enum Color {
     BLUE,

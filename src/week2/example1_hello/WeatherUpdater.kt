@@ -1,6 +1,6 @@
-package week2.example1
+package week2.example1_hello
 
-import week2.example1.Color.*
+import week2.example1_hello.Color.*
 
 
 class WeatherUpdater {

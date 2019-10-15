@@ -1,5 +1,5 @@
 //@file:JvmName("Func") //Class name for Java. By default FunctionsKt
-package week2.example2
+package week2.example2_functions
 
 import kotlin.math.pow
 

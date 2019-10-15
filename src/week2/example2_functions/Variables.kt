@@ -1,4 +1,4 @@
-package week2.example2
+package week2.example2_functions
 
 fun main() {
     val list: MutableList<String> = mutableListOf("Wharfedale", "Microlab")
