@@ -29,7 +29,7 @@ fun colorMix(c1: Color, c2: Color) =
 
 fun makeSound(pet: Pet) =
     when (pet) {
-        is Cat -> pet.meow()
+        is Cat -> pet.meow() //Don't need to cast ((Cat)pet).meow() like in Java
         is Dog -> pet.bark()
         else -> println("Unknown animal")
     }
