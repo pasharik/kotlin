@@ -15,6 +15,7 @@ fun loopList() {
     for (i in 20 downTo 2 step 3) print("$i ")
     println()
     for (c in "abc") print(c + 1)
+    println()
 }
 
 fun loopMap() {
@@ -32,5 +33,6 @@ fun loopMap() {
 
 fun main() {
     loopList()
-    //loopMap()
+    println()
+    loopMap()
 }
