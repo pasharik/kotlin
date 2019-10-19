@@ -1,4 +1,4 @@
-package week2.example_11_playground_extension_fun
+package week2.example_10_playground_extension_fun
 
 //Change the 'sum' function so that it was declared as an extension to List<Int>.
 
