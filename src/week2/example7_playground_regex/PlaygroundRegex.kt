@@ -1,4 +1,4 @@
-package week2.example7_playground1
+package week2.example7_playground_regex
 
 // Implement the function that checks whether a string is a valid identifier.
 // A valid identifier is a non-empty string that starts with a letter or underscore
