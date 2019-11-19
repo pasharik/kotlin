@@ -26,6 +26,9 @@ fun operations() {
         println("$a - $b")
     }
 
+    // windowed - takes sets of N elements
+    l.windowed(3).forEach(::println)
+
     l.last()
 }
 
