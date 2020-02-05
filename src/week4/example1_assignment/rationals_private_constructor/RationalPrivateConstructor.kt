@@ -1,66 +1,59 @@
-package week4.example1_assignment_rationals
+package week4.example1_assignment.rationals_private_constructor
 
 import java.math.BigInteger
 import java.math.BigInteger.ONE
 
-class Rational(val n: BigInteger, val d: BigInteger) : Comparable<Rational> {
-    override fun toString(): String = with(normalize()) {
-        if (d == ONE) "$n" else "$n/$d"
+// Warning about copy() method - this method uses constructor directly and is final :(
+// So can't override it to use factory method instead of constructor
+@Suppress("DataClassPrivateConstructor")
+data class Rational
+    private constructor(val n: BigInteger, val d: BigInteger) : Comparable<Rational> {
+    companion object {
+        fun create(n: BigInteger, d: BigInteger) : Rational {
+            val sign = d.signum().toBigInteger()
+            val g = n.gcd(d)
+            return Rational(n / g * sign, d / g * sign)
+        }
     }
-
+    override fun toString(): String = if (d == ONE) "$n" else "$n/$d"
     override fun compareTo(other: Rational): Int = (this - other).n.compareTo(BigInteger.ZERO)
-    override fun equals(other: Any?): Boolean = with(normalize()) {
-        val otherNum = (other as? Rational)?.normalize() ?: return false
-        return n == otherNum.n && d == otherNum.d
-    }
 }
 
-infix fun Int.divBy(other: Int): Rational = Rational(this.toBigInteger(), other.toBigInteger())
-infix fun Long.divBy(other: Long): Rational = Rational(this.toBigInteger(), other.toBigInteger())
-infix fun BigInteger.divBy(other: BigInteger): Rational = Rational(this, other)
 operator fun Rational.plus(other: Rational): Rational {
     val denominator = this.d.multiply(other.d)
     val num1 = this.n.multiply(other.d)
     val num2 = other.n.multiply(this.d)
     val numerator = num1.plus(num2)
-    return Rational(numerator, denominator)
+    return Rational.create(numerator, denominator)
 }
 
 operator fun Rational.minus(other: Rational): Rational {
-    return this + Rational(other.n.negate(), other.d)
+    return this + Rational.create(other.n.negate(), other.d)
 }
 
 operator fun Rational.times(other: Rational): Rational {
     val numerator = this.n.multiply(other.n)
     val denominator = this.d.multiply(other.d)
-    return Rational(numerator, denominator)
+    return Rational.create(numerator, denominator)
 }
 
 operator fun Rational.div(other: Rational): Rational {
-    val upsideDown = Rational(other.d, other.n)
+    val upsideDown = Rational.create(other.d, other.n)
     return this * upsideDown
 }
 
 operator fun Rational.unaryMinus(): Rational {
-    return Rational(this.n.negate(), this.d)
+    return Rational.create(this.n.negate(), this.d)
 }
+
+infix fun Int.divBy(other: Int): Rational = Rational.create(this.toBigInteger(), other.toBigInteger())
+infix fun Long.divBy(other: Long): Rational = Rational.create(this.toBigInteger(), other.toBigInteger())
+infix fun BigInteger.divBy(other: BigInteger): Rational = Rational.create(this, other)
 
 fun String.toRational(): Rational =
         this.split("/").let {
-            return Rational(BigInteger(it[0]), if (it.size > 1) BigInteger(it[1]) else ONE)
+            return Rational.create(BigInteger(it[0]), if (it.size > 1) BigInteger(it[1]) else ONE)
         }
-
-fun Rational.normalize(): Rational {
-    var (n2, d2) = if (d.signum() < 0) {
-        (n.negate() to d.negate())
-    } else {
-        (n to d)
-    }
-    val gcd = n2.gcd(d2)
-    n2 = n2.divide(gcd)
-    d2 = d2.divide(gcd)
-    return Rational(n2, d2)
-}
 
 fun main() {
     1 to 2
