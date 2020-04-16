@@ -1,4 +1,4 @@
-package week4.example3_lateinit_exception
+package week4.example4_lateinit_exception
 
 
 class A {

@@ -1,4 +1,4 @@
-package week4.example2_unstable_val
+package week4.example3_unstable_val
 
 var counter = 0
 val foo: Int

@@ -1,4 +1,4 @@
-package week4.example1_assignment.rationals
+package week4.example1_assignment_rationals.rationals
 
 import java.lang.IllegalArgumentException
 import java.math.BigInteger

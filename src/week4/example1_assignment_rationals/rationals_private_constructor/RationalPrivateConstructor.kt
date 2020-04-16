@@ -1,4 +1,4 @@
-package week4.example1_assignment.rationals_private_constructor
+package week4.example1_assignment_rationals.rationals_private_constructor
 
 import java.math.BigInteger
 import java.math.BigInteger.ONE
