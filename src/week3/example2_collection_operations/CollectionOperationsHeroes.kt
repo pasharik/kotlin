@@ -39,6 +39,14 @@ fun operationsHeroes2() {
     println("Map by name to age: " + heroes.associate { it.name to it.age })
 }
 
+fun operationsHeroesLazy() {
+    println("\nLazy grouping:")
+    //asSequence() - similar to Java stream - lazy operations
+    println(heroes.asSequence().groupBy { it.age })
+    // groupingBy - lazy version of groupBy. eachCount - terminal operation
+    println(heroes.asSequence().groupingBy { it.age }.eachCount())
+}
+
 data class Hero(val name:String, val age:Int, val gender:Gender?)
 
 enum class Gender {
@@ -50,4 +58,5 @@ fun main() {
     operationsHeroes()
     println()
     operationsHeroes2()
+    operationsHeroesLazy()
 }

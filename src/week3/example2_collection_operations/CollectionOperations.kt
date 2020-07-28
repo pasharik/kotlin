@@ -30,6 +30,11 @@ fun operations() {
     l.windowed(3).forEach(::println)
 
     l.last()
+
+    // getOrPut - put if missing & return
+    val map2 = mutableMapOf(1 to mutableListOf<String>())
+    map2.getOrPut(2) { mutableListOf() } += "person"
+    println(map2)
 }
 
 fun main() {
