@@ -56,6 +56,7 @@ internal class GameBoardImpl<T>(width: Int) : GameBoard<T>, SquareBoardImpl(widt
 
     override fun set(cell: Cell, value: T?) {
         if (value != null) map[cell] = value
+        else map.remove(cell)
     }
 
     override fun filter(predicate: (T?) -> Boolean): Collection<Cell> =
